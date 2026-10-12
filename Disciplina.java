@@ -1,24 +1,39 @@
 public class Disciplina {
+  String nome;
+  int cargaHoraria;
+  double mediaMinima = 7.0;
+  double percentualFaltas = 0.25;
 
-  //Método limiteFaltas
+  public Disciplina(String nome, int cargaHoraria) {
+    this.nome = nome;
+    this.cargaHoraria = cargaHoraria;
+  }
 
+  // Método limiteFaltas
+  public int limiteFaltas() {
+    return (int) (this.cargaHoraria * this.percentualFaltas);
+  }
 
-  //Método aprovadoPorNota
+  // Método aprovadoPorNota
+  public boolean aprovadoPorNota(double media) {
+    return media >= this.mediaMinima;
+  }
 
+  // Método aprovadoPorFrequencia
 
-  //Método aprovadoPorFrequencia
+  public boolean aprovadoPorFrequencia(int faltas) {
+    return faltas <= this.limiteFaltas();
+  }
 
+  // Método alterarMediaMinima
 
-  //Método alterarMediaMinima
+  public void alterarMediaMinima(double novaMedia) {
+    this.mediaMinima = novaMedia;
+  }
 
-  
-  //Método exibir
+  // Método exibir
+  public void exibir() {
+    System.out.printf("%s - %dh - limite de faltas: %d%n", this.nome, this.cargaHoraria, this.limiteFaltas());
+  }
 
-
-
-  public static void main(String[] args) {
-
-    
-
-  }  
 }
